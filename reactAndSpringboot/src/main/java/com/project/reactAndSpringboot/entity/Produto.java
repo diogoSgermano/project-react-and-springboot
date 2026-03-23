@@ -1,6 +1,7 @@
 package com.project.reactAndSpringboot.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 @Entity
@@ -10,8 +11,20 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long codigo;
+
+    @NotBlank(message = "Nome é obrigatório")
+    @Column(nullable = false, length = 100)
     private String nome;
-    private String marca;
+
+    @Column(nullable=true, length=100)
+    private  String marca;
+
+    @PrePersist
+    public void defaultValues() {
+        if (this.marca == null || this.marca.isBlank()) {
+            this.marca = "Sem marca";
+        }
+    }
 
     public Produto(){}
 
