@@ -2,7 +2,7 @@ package com.project.reactAndSpringboot.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
+
 
 @Entity
 @Table (name="produto")
