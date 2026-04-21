@@ -1,22 +1,25 @@
 package com.project.reactAndSpringboot.service;
 
-import com.project.reactAndSpringboot.entity.Produto;
+import com.project.reactAndSpringboot.dto.ProdutoDTO;
 import com.project.reactAndSpringboot.repository.ProdutoRepository;
-import org.jvnet.hk2.annotations.Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProdutoService {
 
     private final ProdutoRepository produtoRepository;
-    public ProdutoService(ProdutoRepository produtoRepository) {
+
+    public ProdutoService(ProdutoRepository produtoRepository) {    
         this.produtoRepository = produtoRepository;
     }
 
-    public List<Produto> listarTodos(){
-        return produtoRepository.findAll();
+    public List<ProdutoDTO> listarTodos() {
+        return produtoRepository.findAll()
+                .stream()
+                .map(ProdutoDTO::new)
+                .collect(Collectors.toList());
     }
-
 }
