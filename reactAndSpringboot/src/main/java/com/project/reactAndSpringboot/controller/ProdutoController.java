@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/produtos")
+@RequestMapping("/api")
 public class ProdutoController {
 
     private final ProdutoService produtoService;
@@ -19,7 +19,7 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-    @GetMapping
+    @GetMapping("/produtos")
     public ApiResponse<List<ProdutoDTO>> listarTodos() {
         List<ProdutoDTO> produtos = produtoService.listarTodos();
         return ApiResponse.sucesso("Lista de produtos recuperada com sucesso", produtos);
