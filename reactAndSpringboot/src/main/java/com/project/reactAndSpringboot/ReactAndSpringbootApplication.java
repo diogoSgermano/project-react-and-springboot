@@ -9,6 +9,7 @@ public class ReactAndSpringbootApplication {
 	public static void main(String[] args) {
 
         SpringApplication.run(ReactAndSpringbootApplication.class, args);
-        System.out.println("Servidor rodando em: http://localhost:8080/");
+        System.out.println("Home: http://localhost:8080/");
+        System.out.println("Produtos: http://localhost:8080/api/produtos");
 	}
 }
